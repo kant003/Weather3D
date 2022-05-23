@@ -29,15 +29,18 @@ app.use(express.static(__dirname + '/public'))
 app.get('/',function(req,res) {
     res.sendFile('index.html');
   });
-
+  
+  app.get('/RapidAPIHost',function(req,res) {
+    res.send(process.env.RapidAPIHost)
+  });
 app.get('/weather', async (req, res) => {
     const url = 'https://weatherapi-com.p.rapidapi.com/ip.json?q=83.37.21.90'
 
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
-            'X-RapidAPI-Key': '331cce4ef2msh7656ea5b11ff5afp1115bejsn0effa1a5d063'
+            'X-RapidAPI-Host': process.env.RapidAPIHost,
+            'X-RapidAPI-Key': process.env.RapidAPIKey
         }
     };
     const response = await fetch(url, options)
