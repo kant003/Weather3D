@@ -40,7 +40,7 @@ class Position {
 }
 
 
-
+/*
 async function getCoords(url = '') {
     const options = {
         method: 'GET',
@@ -56,10 +56,37 @@ async function getCoords(url = '') {
     position = new Position(data.lat, data.lon, r);
 }
 
+async function getC(url = '') {
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
+            'X-RapidAPI-Key': '331cce4ef2msh7656ea5b11ff5afp1115bejsn0effa1a5d063'
+        }
+    };
+    const response = await fetch(url, options)
+    const data = await response.json()
+    console.log(data)
+
+    position = new Position(data.lat, data.lon, r);
+}*/
+
+
+
 function preload() {
-    const url = 'https://weatherapi-com.p.rapidapi.com/ip.json?q=83.37.21.90'
+     const loadData = async () => {
+        const response2 = await fetch('/weather')
+        const data = await response2.json()
+        position = new Position(data.lat, data.lon, r);
+        console.log(data)
+    }
+    loadData()
+    
+    //console.log(data)
+    /*const url = 'https://weatherapi-com.p.rapidapi.com/ip.json?q=83.37.21.90'
 
     getCoords(url);
+*/
 
     img = loadImage('./assets/earth.jpg');
     //earthquakes = loadStrings("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv");
