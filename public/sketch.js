@@ -93,8 +93,8 @@ function preload() {
         data.forEach((element, i) => {
             //console.log(i, element.location)
             const pos = new Position(element.location.lat, element.location.lon, r, element.current.temp_c);
-            icons[element.current.contidion.icon]
-            //countries.push(pos)
+           // icons[element.current.contidion.icon]
+            countries.push(pos)
         })
         console.log('icons:', icons)
     }
